@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="image-container">
+    <img
+      src="../assets/images/1_C5JCNaFuVbryMKlsKwqNCw.png"
+      alt="an image of an anime girl wearing headphones"
+    />
+  </div>
+  <div class="welcome-container">
+    <div>
+      <h1 [@fadeInLetters]="title.length">
+        <span *ngFor="let letter of splitTitle(); let i = index" [@fadeInLetters]="i">{{letter}}</span>
+      </h1>
+      <p>A website the randomly generates anime for you</p>
+    </div>
+    <div class="button">
+      <button (click)="onPress()">Get Started</button>
+    </div>
+  </div>
+</div>
