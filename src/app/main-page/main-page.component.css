@@ -54,6 +54,18 @@
   background-color: rgba(255, 255, 255, 0.3);
   -webkit-backdrop-filter: blur(5px);
           backdrop-filter: blur(5px);
+  display: flex;
+  flex-direction: row-reverse;
+  transition: all 0.5s ease-in-out;
+}
+.container .description-container.open {
+  transform: translateX(0);
+}
+.container .description-container.closed {
+  transform: translateX(-100%);
+}
+.container .description-container .overall-container {
+  width: 100%;
 }
 .container .description-container .title-container {
   display: flex;
@@ -84,4 +96,45 @@
 .container .infromations {
   display: flex;
   justify-content: space-between;
+}
+.container .trailer-container {
+  margin-top: 3rem;
+  text-align: center;
+}
+.container .trailer-container a {
+  text-decoration: none;
+  background-color: black;
+  border: none;
+  padding: 1rem 5rem;
+  cursor: pointer;
+  color: white;
+  border-radius: 5px;
+  text-transform: uppercase;
+  transition: all 0.5s;
+}
+.container .trailer-container a:hover {
+  background-color: rgb(49, 47, 47);
+  letter-spacing: 1px;
+}
+.container .button-container {
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 58rem;
+  transition: left 0.5s ease-in-out;
+}
+.container .button-container button {
+  height: 100vh;
+  border: none;
+  background-color: transparent;
+  font-size: 1.5rem;
+}
+.container .button-closed {
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: rgba(255, 255, 255, 0.3);
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
 }/*# sourceMappingURL=main-page.component.css.map */

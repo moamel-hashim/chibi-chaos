@@ -1,52 +1,67 @@
 <div class="container">
   <div class="overlay"></div>
   <div *ngIf="data" class="background-image">
-    <img [src]="data.data.images.jpg.large_image_url">
+    <img [src]="data.data.images.jpg.large_image_url" />
   </div>
   <div class="carousel-container">
     <div *ngIf="data" class="carousel">
       <button (click)="navigateAnime(-1)" class="arrow-button">
         <fa-icon [icon]="faArrowLeft"></fa-icon>
       </button>
-      <img [src]="data.data.images.jpg.image_url" alt="">
+      <img [src]="data.data.images.jpg.image_url" alt="" />
       <button (click)="navigateAnime(1)" class="arrow-right">
         <fa-icon [icon]="faArrowRight"></fa-icon>
       </button>
     </div>
   </div>
-  <div *ngIf="data" class="description-container">
-    <div class="title-container">
-      <h2>{{data.data.title}}</h2>
-      <div class="score">
-        <div *ngFor="let star of generateStars(data.data.score)" class="star" [ngClass]="{'filled': star === 1}">&#9733;</div>
-        <div class="rated-by">
-          <p><strong>Rated by:</strong> {{data.data.scored_by}}</p>
+        <div class="button-container" [ngClass]="isModuleOpen ? 'button-closed' : 'button-open'">
+        <button (click)="toggleModule()">
+          <fa-icon
+            [icon]="isModuleOpen ? faChevronRight : faChevronLeft"
+          ></fa-icon>
+        </button>
+      </div>
+    <div *ngIf="data" class="description-container" [ngClass]="isModuleOpen ? 'closed' : 'open'">
+      <div class="overall-container">
+        <div class="title-container">
+          <h2>{{ data.data.title }}</h2>
+          <div class="score">
+            <div
+              *ngFor="let star of generateStars(data.data.score)"
+              class="star"
+              [ngClass]="{ filled: star === 1 }"
+            >
+              &#9733;
+            </div>
+            <div class="rated-by">
+              <p><strong>Rated by:</strong> {{ data.data.scored_by }}</p>
+            </div>
+          </div>
+        </div>
+        <div class="infromations">
+          <div class="genera">
+            <p>
+              <span><strong>Type:</strong> {{ data.data.type }}</span>
+              <ng-container *ngFor="let genre of data.data.genres">
+                <span>, {{ genre.name }}</span>
+              </ng-container>
+            </p>
+          </div>
+          <div class="rating">
+            <p><strong>Rating:</strong> {{ data.data.rating }}</p>
+          </div>
+        </div>
+        <div class="synopsis">
+          <h2>Synopsis:</h2>
+          <p>{{ data.data.synopsis }}</p>
+        </div>
+        <div class="additional-information">
+          <p><strong>Status:</strong> {{ data.data.status }}</p>
+          <p><strong>Studio:</strong> {{ data.data.studios[0]?.name }}</p>
+        </div>
+        <div class="trailer-container">
+          <a [href]="data.data.trailer.url" target="_blank">Watch Trailer</a>
         </div>
       </div>
     </div>
-    <div class="infromations">
-      <div class="genera">
-        <p>
-          <span><strong>Type:</strong> {{data.data.type}}</span>
-          <ng-container *ngFor="let genre of data.data.genres">
-            <span>, {{genre.name}}</span>
-          </ng-container>
-        </p>
-      </div>
-      <div class="rating">
-        <p><strong>Rating:</strong> {{data.data.rating}}</p>
-      </div>
-    </div>
-    <div class="synopsis">
-      <h2>Synopsis:</h2>
-      <p>{{data.data.synopsis}}</p>
-    </div>
-    <div class="additional-information">
-      <p><strong>Status:</strong> {{data.data.status}}</p>
-      <p><strong>Studio:</strong> {{data.data.studios[0]?.name}}</p>
-    </div>
-    <div class="trailer-container">
-      <a [href]="data.data.trailer.url" target="_blank">Watch Trailer</a>
-    </div>
-  </div>
 </div>
