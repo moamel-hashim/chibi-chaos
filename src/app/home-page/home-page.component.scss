@@ -1,0 +1,75 @@
+@function colors($color) {
+  @if $color == "button" {
+    @return rgb(103, 53, 54);
+  } @else if $color == "white" {
+    @return #ffff;
+  } @else if $color == "button-hover" {
+    @return rgb(83 43 44);
+  }
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  align-items: center;
+  overflow: hidden;
+  .image-container {
+    width: 100%;
+    height: 100vh;
+    img {
+      border-radius: 0 20px 20px 0;
+    }
+  }
+  .welcome-container {
+    width: 100%;
+    text-align: center;
+    height: 100vh;
+    display: grid;
+    align-items: center;
+    h1 {
+      display: inline-block;
+      span {
+        display: inline-block;
+        opacity: 1;
+      }
+      span:nth-child(8) {
+        margin-right: 0.2em;
+      }
+      span:nth-child(11) {
+        margin-right: 0.2em;
+      }
+      span:nth-child(17) {
+        margin-right: 0.2em;
+      }
+    }
+  }
+  .button {
+    a {
+      padding: 1rem 10rem 1rem 10rem;
+      border: none;
+      border-radius: 5px;
+      background-color: colors("button");
+      color: colors("white");
+      font-size: 1.5rem;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.5s;
+      text-decoration: none;
+    }
+    a:hover {
+      letter-spacing: 1px;
+      background-color: colors("button-hover");
+    }
+  }
+}
+
+@keyframes fadeInLetters {
+  to {
+    opacity: 0;
+  }
+}
+@for $i from 1 through 26 {
+  h1 span:nth-child(#{$i}) {
+    animation: fadeInLetters 300ms ease-in-out #{$i * 50}ms;
+  }
+}
