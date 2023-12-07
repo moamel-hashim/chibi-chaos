@@ -1,0 +1,161 @@
+.container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  align-items: center;
+  overflow: hidden;
+}
+.container .image-container {
+  width: 100%;
+  height: 100vh;
+}
+.container .image-container img {
+  border-radius: 0 20px 20px 0;
+}
+.container .welcome-container {
+  width: 100%;
+  text-align: center;
+  height: 100vh;
+  display: grid;
+  align-items: center;
+}
+.container .welcome-container h1 {
+  display: inline-block;
+}
+.container .welcome-container h1 span {
+  display: inline-block;
+  opacity: 1;
+}
+.container .welcome-container h1 span:nth-child(8) {
+  margin-right: 0.2em;
+}
+.container .welcome-container h1 span:nth-child(11) {
+  margin-right: 0.2em;
+}
+.container .welcome-container h1 span:nth-child(17) {
+  margin-right: 0.2em;
+}
+.container .button a {
+  padding: 1rem 10rem 1rem 10rem;
+  border: none;
+  border-radius: 5px;
+  background-color: rgb(103, 53, 54);
+  color: white;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.5s;
+  text-decoration: none;
+}
+.container .button a:hover {
+  letter-spacing: 1px;
+  background-color: rgb(83, 43, 44);
+}
+
+@keyframes fadeInLetters {
+  to {
+    opacity: 0;
+  }
+}
+h1 span:nth-child(1) {
+  animation: fadeInLetters 300ms ease-in-out 50ms;
+}
+
+h1 span:nth-child(2) {
+  animation: fadeInLetters 300ms ease-in-out 100ms;
+}
+
+h1 span:nth-child(3) {
+  animation: fadeInLetters 300ms ease-in-out 150ms;
+}
+
+h1 span:nth-child(4) {
+  animation: fadeInLetters 300ms ease-in-out 200ms;
+}
+
+h1 span:nth-child(5) {
+  animation: fadeInLetters 300ms ease-in-out 250ms;
+}
+
+h1 span:nth-child(6) {
+  animation: fadeInLetters 300ms ease-in-out 300ms;
+}
+
+h1 span:nth-child(7) {
+  animation: fadeInLetters 300ms ease-in-out 350ms;
+}
+
+h1 span:nth-child(8) {
+  animation: fadeInLetters 300ms ease-in-out 400ms;
+}
+
+h1 span:nth-child(9) {
+  animation: fadeInLetters 300ms ease-in-out 450ms;
+}
+
+h1 span:nth-child(10) {
+  animation: fadeInLetters 300ms ease-in-out 500ms;
+}
+
+h1 span:nth-child(11) {
+  animation: fadeInLetters 300ms ease-in-out 550ms;
+}
+
+h1 span:nth-child(12) {
+  animation: fadeInLetters 300ms ease-in-out 600ms;
+}
+
+h1 span:nth-child(13) {
+  animation: fadeInLetters 300ms ease-in-out 650ms;
+}
+
+h1 span:nth-child(14) {
+  animation: fadeInLetters 300ms ease-in-out 700ms;
+}
+
+h1 span:nth-child(15) {
+  animation: fadeInLetters 300ms ease-in-out 750ms;
+}
+
+h1 span:nth-child(16) {
+  animation: fadeInLetters 300ms ease-in-out 800ms;
+}
+
+h1 span:nth-child(17) {
+  animation: fadeInLetters 300ms ease-in-out 850ms;
+}
+
+h1 span:nth-child(18) {
+  animation: fadeInLetters 300ms ease-in-out 900ms;
+}
+
+h1 span:nth-child(19) {
+  animation: fadeInLetters 300ms ease-in-out 950ms;
+}
+
+h1 span:nth-child(20) {
+  animation: fadeInLetters 300ms ease-in-out 1000ms;
+}
+
+h1 span:nth-child(21) {
+  animation: fadeInLetters 300ms ease-in-out 1050ms;
+}
+
+h1 span:nth-child(22) {
+  animation: fadeInLetters 300ms ease-in-out 1100ms;
+}
+
+h1 span:nth-child(23) {
+  animation: fadeInLetters 300ms ease-in-out 1150ms;
+}
+
+h1 span:nth-child(24) {
+  animation: fadeInLetters 300ms ease-in-out 1200ms;
+}
+
+h1 span:nth-child(25) {
+  animation: fadeInLetters 300ms ease-in-out 1250ms;
+}
+
+h1 span:nth-child(26) {
+  animation: fadeInLetters 300ms ease-in-out 1300ms;
+}/*# sourceMappingURL=home-page.component.css.map */

@@ -1,0 +1,160 @@
+.container {
+  overflow: hidden;
+  position: relative;
+  .overlay {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background: black;
+    opacity: 50%;
+  }
+  .background-image {
+    width: 100%;
+    height: 100vh;
+    image {
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .carousel-container {
+    position: absolute;
+    z-index: 1;
+    width: 20%;
+    height: 20vh;
+    right: 2rem;
+    bottom: 2rem;
+    background-color: transparent;
+  }
+  .carousel {
+    width: 100%;
+    height: 100%;
+    padding: 10px 0;
+    .carousel-images {
+      display: flex;
+      width: 35%;
+      height: 100%;
+      transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+      .previous-image {
+        border-radius: 10px;
+        transform: rotateY(320deg) scale(0.8);
+        opacity: 60%;
+      }
+      .current-image {
+        border-radius: 10px;
+      }
+      .next-image {
+        border-radius: 10px;
+        opacity: 60%;
+        transform: rotateY(50deg) scale(0.8);
+      }
+    }
+    img {
+      width: 100%;
+      height: 100%;
+    }
+    button {
+      background-color: transparent;
+      border: none;
+      font-size: 1rem;
+    }
+  }
+  .description-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 50%;
+    padding: 1rem;
+    background-color: rgba($color: white, $alpha: 0.3);
+    backdrop-filter: blur(5px);
+    display: flex;
+    flex-direction: row-reverse;
+    transition: all 0.5s ease-in-out;
+    &.open {
+      transform: translateX(0);
+    }
+
+    &.closed {
+      transform: translateX(-100%);
+    }
+    .overall-container {
+      width: 100%;
+    }
+    .title-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      h2 {
+        width: 50%;
+      }
+    }
+    .score {
+      display: flex;
+      align-items: baseline;
+      .star {
+        font-size: 1.5rem;
+        color: #ddd;
+        margin-right: 4px;
+      }
+      .filled {
+        color: gold;
+      }
+      .rated-by {
+        margin-left: 5px;
+      }
+    }
+  }
+  .genera {
+    p {
+      span {
+        margin-bottom: 1rem;
+      }
+    }
+  }
+  .infromations {
+    display: flex;
+    justify-content: space-between;
+  }
+  .trailer-container {
+    margin-top: 3rem;
+    text-align: center;
+    a {
+      text-decoration: none;
+      background-color: black;
+      border: none;
+      padding: 1rem 5rem;
+      cursor: pointer;
+      color: white;
+      border-radius: 5px;
+      text-transform: uppercase;
+      transition: all 0.5s;
+    }
+    a:hover {
+      background-color: rgb(49, 47, 47);
+      letter-spacing: 1px;
+    }
+  }
+      .button-container {
+      position: fixed;
+      z-index: 1;
+      top: 0;
+      left: 58rem;
+      transition: left 0.5s ease-in-out;
+      button {
+        height: 100vh;
+        border: none;
+        background-color: transparent;
+        font-size: 1.5rem;
+      }
+    }
+    .button-closed {
+      position: fixed;
+      z-index: 1;
+      top: 0;
+      left: 0;
+      background-color: rgba($color: white, $alpha: 0.3);
+      backdrop-filter: blur(5px);
+    }
+}
