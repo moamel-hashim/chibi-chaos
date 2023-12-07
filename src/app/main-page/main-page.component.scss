@@ -25,14 +25,31 @@
     height: 20vh;
     right: 2rem;
     bottom: 2rem;
-    background-color: rgba($color: white, $alpha: 0.3);
+    background-color: transparent;
   }
   .carousel {
-    width: 50%;
+    width: 100%;
     height: 100%;
-    margin: 0 auto;
-    display: flex;
-    gap: 1rem;
+    padding: 10px 0;
+    .carousel-images {
+      display: flex;
+      width: 35%;
+      height: 100%;
+      transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+      .previous-image {
+        border-radius: 10px;
+        transform: rotateY(320deg) scale(0.8);
+        opacity: 60%;
+      }
+      .current-image {
+        border-radius: 10px;
+      }
+      .next-image {
+        border-radius: 10px;
+        opacity: 60%;
+        transform: rotateY(50deg) scale(0.8);
+      }
+    }
     img {
       width: 100%;
       height: 100%;

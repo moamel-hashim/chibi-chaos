@@ -22,8 +22,11 @@ import { trigger, transition, style, animate } from '@angular/animations';
   ],
 })
 export class MainPageComponent implements OnInit {
-  title = 'Main Page';
+  title:string = 'Main Page';
   private url: string = 'https://api.jikan.moe/v4/random/anime';
+  animeDataArray:any = [];
+  currentIndex:number = 0;
+  private carouselData: any = [];
   data: any;
   faArrowLeft = faArrowLeft;
   faArrowRight = faArrowRight;
@@ -31,16 +34,50 @@ export class MainPageComponent implements OnInit {
   faChevronLeft = faChevronLeft;
   isModuleOpen = true;
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
+    await this.fetchAnimeData();
+    this.initializeCarouselData();
+  }
+
+  async fetchAnimeData():Promise<any> {
     fetch(this.url)
     .then((response) => response.json())
     .then((res) => {
-      console.log(res);
-      this.data = res
-    })
+      this.data = res;
+      this.animeDataArray.push(res)
+      return res
+    }) as Promise<any>
   }
-  navigateAnime(direction: number): void {
 
+  async navigateAnime(direction:number): Promise<void> {
+    const newIndex = this.currentIndex + direction;
+    if(newIndex >= 0 && newIndex < this.animeDataArray.length) {
+      this.currentIndex = newIndex;
+      this.data = this.animeDataArray[this.currentIndex];
+    } else {
+      await this.fetchAnimeData();
+      this.currentIndex = this.animeDataArray.length - 1;
+      this.data = this.animeDataArray[this.currentIndex];
+    }
+    await this.fetchPreviousAndNextData();
+  }
+
+  async initializeCarouselData() {
+    this.carouselData = [null, this.data, null];
+    await this.fetchPreviousAndNextData();
+  }
+  async fetchPreviousAndNextData() {
+    this.carouselData[0] = this.animeDataArray[this.currentIndex - 1]?.data || null;
+    await this.fetchAnimeData();
+    this.carouselData[2] = this.animeDataArray[this.currentIndex + 1]?.data || null;
+  }
+
+  getCarouselImage(offset:number): string {
+    const index = this.currentIndex + offset;
+    if(index >= 0 && index < this.animeDataArray.length) {
+      return this.animeDataArray[index].data.images.jpg.image_url;
+    }
+    return '';
   }
 
   generateStars(score:number): number[] {
