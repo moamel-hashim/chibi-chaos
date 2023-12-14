@@ -10,18 +10,17 @@
         <img [src]="getCarouselImage(0)" alt="" (click)="navigateAnime(0)" class="current-image">
         <img [src]="getCarouselImage(1)" alt="" (click)="navigateAnime(1)" class="next-image">
       </div>
-
     </div>
   </div>
-        <div class="button-container" [ngClass]="isModuleOpen ? 'button-closed' : 'button-open'">
-        <button (click)="toggleModule()">
-          <fa-icon
-            [icon]="isModuleOpen ? faChevronRight : faChevronLeft"
-          ></fa-icon>
-        </button>
-      </div>
-    <div *ngIf="data" class="description-container" [ngClass]="isModuleOpen ? 'closed' : 'open'">
-      <div class="overall-container">
+  <div class="description-container" [ngClass]="isModuleOpen ? 'closed' : 'open'">
+    <div class="button-container" [ngClass]="isModuleOpen ? 'button-closed' : 'button-open'">
+    <button (click)="toggleModule()">
+      <fa-icon
+        [icon]="isModuleOpen ? faChevronRight : faChevronLeft"
+      ></fa-icon>
+    </button>
+  </div>
+      <div class="overall-container" *ngIf="data">
         <div class="title-container">
           <h2>{{ animeDataArray[currentIndex].data.title }}</h2>
           <div class="score">

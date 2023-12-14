@@ -86,6 +86,5 @@ export class MainPageComponent implements OnInit {
   }
   toggleModule() {
     this.isModuleOpen = !this.isModuleOpen;
-    console.log(this.isModuleOpen)
   }
 }
