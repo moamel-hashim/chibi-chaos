@@ -8,14 +8,38 @@
   }
 }
 
+@mixin phone {
+  @media only screen and (max-width: 600px) {
+    @content
+  }
+}
+
+@mixin tablet {
+  @media only screen and (max-width: 1000px ) {
+    @content
+  }
+}
+
 .container {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   align-items: center;
   overflow: hidden;
+  @include phone {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  @include tablet {
+    grid-template-columns: repeat(1, 1fr);
+  }
   .image-container {
     width: 100%;
     height: 100vh;
+    @include phone {
+      display: none;
+    }
+    @include tablet {
+      display: none;
+    }
     img {
       border-radius: 0 20px 20px 0;
     }
@@ -55,6 +79,9 @@
       cursor: pointer;
       transition: all 0.5s;
       text-decoration: none;
+      @include phone {
+        padding: 1rem 3rem;
+      }
     }
     a:hover {
       letter-spacing: 1px;
