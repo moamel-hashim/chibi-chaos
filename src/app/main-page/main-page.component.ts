@@ -43,8 +43,8 @@ export class MainPageComponent implements OnInit {
     fetch(this.url)
     .then((response) => response.json())
     .then((res) => {
-      this.data = res.data && res.data.genres ? res.data.genres.filter((genre: { name: string }) => genre.name !== 'Hentai') : null;
-      this.animeDataArray.push(res)
+      this.data = res;
+      this.animeDataArray.push(res);
       return res
     }) as Promise<any>
   }
