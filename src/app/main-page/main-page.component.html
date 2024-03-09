@@ -1,118 +1,65 @@
 <div class="container">
   <div class="overlay"></div>
-  <ng-template [ngIf]="data">
-  <div class="background-image">
+  <!-- <div *ngIf="data" class="background-image">
     <img [src]="getCarouselImage(0)" />
-  </div>
-</ng-template>
+  </div> -->
   <div class="carousel-container">
     <div class="carousel">
       <div class="carousel-images" [@slideInOut]="currentIndex">
-        <img
-          [src]="getCarouselImage(-1)"
-          alt=""
-          (click)="navigateAnime(-1)"
-          class="previous-image"
-        />
-        <img
-          [src]="getCarouselImage(0)"
-          alt=""
-          (click)="navigateAnime(0)"
-          class="current-image"
-        />
-        <img
-          [src]="getCarouselImage(1)"
-          alt=""
-          (click)="navigateAnime(1)"
-          class="next-image"
-        />
+        <img [src]="getCarouselImage(-1)" alt="" (click)="navigateAnime(-1)" class="previous-image">
+        <img [src]="getCarouselImage(0)" alt="" (click)="navigateAnime(0)" class="current-image">
+        <img [src]="getCarouselImage(1)" alt="" (click)="navigateAnime(1)" class="next-image">
       </div>
     </div>
   </div>
-  <div
-    class="description-container"
-    [ngClass]="isModuleOpen ? 'closed' : 'open'"
-  >
-    <div
-      class="button-container"
-      [ngClass]="isModuleOpen ? 'button-closed' : 'button-open'"
-    >
-      <button (click)="toggleModule()">
-        <fa-icon
-          [icon]="isModuleOpen ? faChevronRight : faChevronLeft"
-        ></fa-icon>
-      </button>
-    </div>
-    <div class="overall-container" *ngIf="data">
-      <div class="title-container">
-        <h2>{{ animeDataArray[currentIndex].data.title }}</h2>
-        <div class="score">
-          <div
-            *ngFor="
-              let star of generateStars(animeDataArray[currentIndex].data.score)
-            "
-            class="star"
-            [ngClass]="{ filled: star === 1 }"
-          >
-            &#9733;
+  <div class="description-container" [ngClass]="isModuleOpen ? 'closed' : 'open'">
+    <div class="button-container" [ngClass]="isModuleOpen ? 'button-closed' : 'button-open'">
+    <button (click)="toggleModule()">
+      <fa-icon
+        [icon]="isModuleOpen ? faChevronRight : faChevronLeft"
+      ></fa-icon>
+    </button>
+  </div>
+      <!-- <div class="overall-container" *ngIf="data">
+        <div class="title-container">
+          <h2>{{ animeDataArray[currentIndex].data.title }}</h2>
+          <div class="score">
+            <div
+              *ngFor="let star of generateStars(animeDataArray[currentIndex].data.score)"
+              class="star"
+              [ngClass]="{ filled: star === 1 }"
+            >
+              &#9733;
+            </div>
+            <div class="rated-by">
+              <p><strong>Rated by:</strong> {{ animeDataArray[currentIndex].data.scored_by }}</p>
+            </div>
           </div>
-          <div class="rated-by">
+        </div>
+        <div class="infromations">
+          <div class="genera">
             <p>
-              <strong>Rated by:</strong>
-              {{ animeDataArray[currentIndex].data.scored_by }}
+              <span><strong>Type:</strong> {{ animeDataArray[currentIndex].data.type }}</span>
+              <ng-container *ngFor="let genre of animeDataArray[currentIndex].data.genres">
+                <span>, {{ genre.name }}</span>
+              </ng-container>
             </p>
           </div>
+          <div class="rating">
+            <p><strong>Rating:</strong> {{ animeDataArray[currentIndex].data.rating }}</p>
+          </div>
+        </div>
+        <div class="synopsis">
+          <h2>Synopsis:</h2>
+          <p>{{ animeDataArray[currentIndex].data.synopsis }}</p>
+        </div>
+        <div class="additional-information">
+          <p><strong>Status:</strong> {{ animeDataArray[currentIndex].data.status}}</p>
+          <p><strong>Studio:</strong> {{ animeDataArray[currentIndex].data.studios[0]?.name }}</p>
+        </div>
+        <div class="trailer-container">
+          <a [href]="animeDataArray[currentIndex].data.trailer.url" target="_blank">Watch Trailer</a>
         </div>
       </div>
-      <div class="infromations">
-        <div class="genera">
-          <p>
-            <span
-              ><strong>Type:</strong>
-              {{ animeDataArray[currentIndex].data.type }}</span
-            >
-            <ng-container
-              *ngFor="let genre of animeDataArray[currentIndex].data.genres"
-            >
-              <span>, {{ genre.name }}</span>
-            </ng-container>
-          </p>
-        </div>
-        <div class="rating">
-          <p>
-            <strong>Rating:</strong>
-            {{ animeDataArray[currentIndex].data.rating }}
-          </p>
-        </div>
-      </div>
-      <div class="synopsis">
-        <h2>Synopsis:</h2>
-        <p>{{ animeDataArray[currentIndex].data.synopsis }}</p>
-      </div>
-      <div class="additional-information">
-        <p>
-          <strong>Status:</strong>
-          {{ animeDataArray[currentIndex].data.status }}
-        </p>
-        <p>
-          <strong>Studio:</strong>
-          {{ animeDataArray[currentIndex].data.studios[0]?.name }}
-        </p>
-      </div>
-      <div class="trailer-container">
-        <ng-template [ngIf]="isTrailerAvailable()">
-          <a
-          [href]="animeDataArray[currentIndex].data.trailer.url"
-          target="_blank"
-          >Watch Trailer</a
-          >
-        </ng-template>
-        <ng-template [ngIf]="!isTrailerAvailable()">
-          <span
-          >Trailer not available</span
-          >
-        </ng-template>
-        </div>
-    </div>
-  </div>
+    </div> -->
 </div>
