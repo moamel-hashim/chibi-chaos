@@ -1,8 +1,10 @@
 <div class="container">
   <div class="overlay"></div>
-  <!-- <div *ngIf="data" class="background-image">
+  <ng-template [ngIf]="data">
+  <div class="background-image">
     <img [src]="getCarouselImage(0)" />
-  </div> -->
+  </div>
+</ng-template>
   <div class="carousel-container">
     <div class="carousel">
       <div class="carousel-images" [@slideInOut]="currentIndex">
@@ -20,7 +22,7 @@
       ></fa-icon>
     </button>
   </div>
-      <!-- <div class="overall-container" *ngIf="data">
+      <div class="overall-container" *ngIf="data">
         <div class="title-container">
           <h2>{{ animeDataArray[currentIndex].data.title }}</h2>
           <div class="score">
@@ -58,8 +60,13 @@
           <p><strong>Studio:</strong> {{ animeDataArray[currentIndex].data.studios[0]?.name }}</p>
         </div>
         <div class="trailer-container">
-          <a [href]="animeDataArray[currentIndex].data.trailer.url" target="_blank">Watch Trailer</a>
+          <ng-template [ngIf]="isTrailerAvailable()">
+            <a [href]="animeDataArray[currentIndex].data.trailer.url" target="_blank">Watch Trailer</a>
+          </ng-template>
+          <ng-template [ngIf]="!isTrailerAvailable()">
+            <span>Trailer not available</span>
+          </ng-template>
         </div>
       </div>
-    </div> -->
+    </div>
 </div>
