@@ -98,8 +98,16 @@
         </p>
       </div>
       <div class="trailer-container">
-          <a [href]="animeDataArray[currentIndex].data.trailer.url" target="_blank">Watch Trailer</a>
-        </div>
+        <a
+          *ngIf="isTrailerAvailable()"
+          [href]="animeDataArray[currentIndex]?.data?.trailer?.url"
+          target="_blank"
+          >Watch Trailer</a
+        >
+        <span *ngIf="!isTrailerAvailable()"
+          >Trailer not available</span
+        >
+      </div>
     </div>
   </div>
 </div>
