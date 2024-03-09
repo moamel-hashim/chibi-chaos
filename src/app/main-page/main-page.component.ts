@@ -10,22 +10,22 @@ import { trigger, transition, style, animate } from '@angular/animations';
   templateUrl: './main-page.component.html',
   styleUrl: './main-page.component.scss',
   animations: [
-    trigger('slideInOut',[
+    trigger('slideInOut', [
       transition(':enter', [
-        style({transform: 'translateX(100%)'}),
-        animate('300ms ease-in-out', style({transform: 'translateX(0%)'})),
+        style({ transform: 'translateX(100%)' }),
+        animate('300ms ease-in-out', style({ transform: 'translateX(0%)' })),
       ]),
       transition(':leave', [
-        animate('300ms ease-in-out', style({transform: 'translateX(100%)'})),
+        animate('300ms ease-in-out', style({ transform: 'translateX(100%)' })),
       ]),
     ]),
   ],
 })
 export class MainPageComponent implements OnInit {
-  title:string = 'Main Page';
+  title: string = 'Main Page';
   private url: string = 'https://api.jikan.moe/v4/random/anime';
-  animeDataArray:any = [];
-  currentIndex:number = 0;
+  animeDataArray: any = [];
+  currentIndex: number = 0;
   private carouselData: any = [];
   data: any;
   faArrowLeft = faArrowLeft;
@@ -39,19 +39,19 @@ export class MainPageComponent implements OnInit {
     this.initializeCarouselData();
   }
 
-  async fetchAnimeData():Promise<any> {
+  async fetchAnimeData(): Promise<any> {
     fetch(this.url)
-    .then((response) => response.json())
-    .then((res) => {
-      this.data = res;
-      this.animeDataArray.push(res);
-      return res
-    }) as Promise<any>
+      .then((response) => response.json())
+      .then((res) => {
+        this.data = res;
+        this.animeDataArray.push(res);
+        return res;
+      }) as Promise<any>;
   }
 
-  async navigateAnime(direction:number): Promise<void> {
+  async navigateAnime(direction: number): Promise<void> {
     const newIndex = this.currentIndex + direction;
-    if(newIndex >= 0 && newIndex < this.animeDataArray.length) {
+    if (newIndex >= 0 && newIndex < this.animeDataArray.length) {
       this.currentIndex = newIndex;
       this.data = this.animeDataArray[this.currentIndex];
     } else {
@@ -67,29 +67,33 @@ export class MainPageComponent implements OnInit {
     await this.fetchPreviousAndNextData();
   }
   async fetchPreviousAndNextData() {
-    this.carouselData[0] = this.animeDataArray[this.currentIndex - 1]?.data || null;
+    this.carouselData[0] =
+      this.animeDataArray[this.currentIndex - 1]?.data || null;
     await this.fetchAnimeData();
-    this.carouselData[2] = this.animeDataArray[this.currentIndex + 1]?.data || null;
+    this.carouselData[2] =
+      this.animeDataArray[this.currentIndex + 1]?.data || null;
   }
 
-  getCarouselImage(offset:number): string {
+  getCarouselImage(offset: number): string {
     const index = this.currentIndex + offset;
-    if(index >= 0 && index < this.animeDataArray.length) {
+    if (index >= 0 && index < this.animeDataArray.length) {
       return this.animeDataArray[index].data.images.jpg.image_url;
     }
     return '';
   }
 
-  generateStars(score:number): number[] {
+  generateStars(score: number): number[] {
     const roundedScore = Math.round(score);
-    return Array.from({length: 10}, (_, index) => index < roundedScore ? 1 : 0);
+    return Array.from({ length: 10 }, (_, index) =>
+      index < roundedScore ? 1 : 0
+    );
   }
   toggleModule() {
     this.isModuleOpen = !this.isModuleOpen;
   }
 
   isTrailerAvailable(): boolean {
-    return !!this.animeDataArray[this.currentIndex]?.data?.trailer?.url;
+    const animeData = this.animeDataArray[this.currentIndex]?.data;
+    return animeData && animeData.trailer && animeData.trailer.url !== null;
   }
-
 }
