@@ -87,4 +87,9 @@ export class MainPageComponent implements OnInit {
   toggleModule() {
     this.isModuleOpen = !this.isModuleOpen;
   }
+
+  isTrailerAvailable(): boolean {
+    return !!this.animeDataArray[this.currentIndex]?.data?.trailer?.url;
+  }
+
 }

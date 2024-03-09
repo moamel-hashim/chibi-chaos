@@ -99,12 +99,12 @@
       </div>
       <div class="trailer-container">
         <a
-          *ngIf="animeDataArray[currentIndex]?.data?.trailer?.url"
-          [href]="animeDataArray[currentIndex].data.trailer.url"
+          *ngIf="isTrailerAvailable()"
+          [href]="animeDataArray[currentIndex]?.data?.trailer?.url"
           target="_blank"
           >Watch Trailer</a
         >
-        <span *ngIf="!animeDataArray[currentIndex]?.data?.trailer?.url"
+        <span *ngIf="!isTrailerAvailable()"
           >Trailer not available</span
         >
       </div>
