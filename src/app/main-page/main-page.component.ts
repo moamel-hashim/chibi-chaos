@@ -34,20 +34,20 @@ export class MainPageComponent implements OnInit {
   faChevronLeft = faChevronLeft;
   isModuleOpen = true;
 
-  async ngOnInit(): Promise<void> {
-    await this.fetchAnimeData();
+  ngOnInit():void {
+    this.fetchAnimeData();
     this.initializeCarouselData();
   }
 
-  async fetchAnimeData(): Promise<any> {
+   fetchAnimeData(): any {
     fetch(this.url)
       .then((response) => response.json())
       .then((res) => {
         this.data = res;
         this.animeDataArray.push(res);
         return res;
-      }) as Promise<any>;
-  }
+      })
+  };
 
   async navigateAnime(direction: number): Promise<void> {
     const newIndex = this.currentIndex + direction;
