@@ -24,7 +24,7 @@
   </div>
       <div class="overall-container" *ngIf="data">
         <div class="title-container">
-          <h2>{{ animeDataArray[currentIndex].data.title }}</h2>
+          <h2>{{ animeDataArray[currentIndex]?.data.title }}</h2>
           <div class="score">
             <div
               *ngFor="let star of generateStars(animeDataArray[currentIndex].data.score)"
@@ -34,30 +34,30 @@
               &#9733;
             </div>
             <div class="rated-by">
-              <p><strong>Rated by:</strong> {{ animeDataArray[currentIndex].data.scored_by }}</p>
+              <p><strong>Rated by:</strong> {{ animeDataArray[currentIndex]?.data.scored_by }}</p>
             </div>
           </div>
         </div>
         <div class="infromations">
           <div class="genera">
             <p>
-              <span><strong>Type:</strong> {{ animeDataArray[currentIndex].data.type }}</span>
+              <span><strong>Type:</strong> {{ animeDataArray[currentIndex]?.data.type }}</span>
               <ng-container *ngFor="let genre of animeDataArray[currentIndex].data.genres">
-                <span>, {{ genre.name }}</span>
+                <span>, {{ genre?.name }}</span>
               </ng-container>
             </p>
           </div>
           <div class="rating">
-            <p><strong>Rating:</strong> {{ animeDataArray[currentIndex].data.rating }}</p>
+            <p><strong>Rating:</strong> {{ animeDataArray[currentIndex]?.data.rating }}</p>
           </div>
         </div>
         <div class="synopsis">
           <h2>Synopsis:</h2>
-          <p>{{ animeDataArray[currentIndex].data.synopsis }}</p>
+          <p>{{ animeDataArray[currentIndex]?.data.synopsis }}</p>
         </div>
         <div class="additional-information">
-          <p><strong>Status:</strong> {{ animeDataArray[currentIndex].data.status}}</p>
-          <p><strong>Studio:</strong> {{ animeDataArray[currentIndex].data.studios[0]?.name }}</p>
+          <p><strong>Status:</strong> {{ animeDataArray[currentIndex]?.data.status}}</p>
+          <p><strong>Studio:</strong> {{ animeDataArray[currentIndex]?.data.studios[0]?.name }}</p>
         </div>
         <div class="trailer-container">
           <ng-template [ngIf]="isTrailerAvailable()">
